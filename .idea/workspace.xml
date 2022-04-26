@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b51686b2-ccf7-4e7b-82e2-82fbb978f5bc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/italy_aging_d3_v6/data/1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/italy_aging_d3_v6/js/chart1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/italy_aging_d3_v6/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/italy_aging_d3_v6/index.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/italy_aging_d3_v6/js/chart1.js" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectId" id="28KLlqhMQQKYKss5ieYdXPg1MQf" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/italy_aging_d3_v6/data" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Diego\Desktop\INFOVIS-MiniProject\italy_aging_d3_v6\data" />
+      <recent name="C:\Users\Diego\Desktop\INFOVIS-MiniProject\italy_aging_d3_v6\js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Diego\Desktop\INFOVIS-MiniProject" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b51686b2-ccf7-4e7b-82e2-82fbb978f5bc" name="Default Changelist" comment="" />
+      <created>1650960486489</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1650960486489</updated>
+      <workItem from="1650960489462" duration="532000" />
+      <workItem from="1650961046641" duration="48000" />
+      <workItem from="1650961124347" duration="44000" />
+      <workItem from="1650961288148" duration="7943000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>
