@@ -1,0 +1,75 @@
+[
+  {
+    "year": "1950",
+    "ageGroups": [
+      {
+        "ageGroup": "10",
+        "population": 4369
+      },
+      {
+        "ageGroup": "4684",
+        "population": 3839
+      },
+      {
+        "ageGroup": "450",
+        "population": 4170
+      },
+      {
+        "ageGroup": "1230",
+        "population": 4028
+      },
+      {
+        "ageGroup": "4556",
+        "population": 3979
+      },
+      {
+        "ageGroup": "4042",
+        "population": 3865
+      },
+      {
+        "ageGroup": "100",
+        "population": 2613
+      },
+      {
+        "ageGroup": "500",
+        "population": 3492
+      },
+      {
+        "ageGroup": "1000",
+        "population": 3217
+      },
+      {
+        "ageGroup": "2000",
+        "population": 2752
+      },
+      {
+        "ageGroup": "3000",
+        "population": 2402
+      },
+      {
+        "ageGroup": "4000",
+        "population": 2063
+      },
+      {
+        "ageGroup": "5000",
+        "population": 1826
+      },
+      {
+        "ageGroup": "6000",
+        "population": 1480
+      },
+      {
+        "ageGroup": "7000",
+        "population": 1105
+      },
+      {
+        "ageGroup": "8000",
+        "population": 682
+      },
+      {
+        "ageGroup": "9000",
+        "population": 485
+      }
+    ]
+  }
+]
