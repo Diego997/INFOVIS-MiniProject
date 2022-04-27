@@ -23,17 +23,37 @@ var xScale = d3.scaleBand()         // ordinal scale
 //
 var yScale = d3.scaleLinear().range([height, 0]);
 
-var barColors = d3.scaleLinear() // projecting continuous data into the diagram
-        .range(["blue","red"])
+var yColorScale = d3.scaleLinear().range([height, 0]);
+
+var barColors = d3.scaleLinear().range(["blue","red"]);
 
 var xAxis = d3.axisBottom(xScale);  		// Bottom = ticks below
-var yAxis = d3.axisLeft(yScale).ticks(10);   // Left = ticks on the left 
+var yAxis = d3.axisLeft(yScale).ticks(10);
+var legendAxis = d3.axisRight(yColorScale).ticks(10);// Left = ticks on the left
 
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)     // i.e., 800 again 
     .attr("height", height + margin.top + margin.bottom)   // i.e., 300 again
     .append("g")                                           // g is a group
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");                                                    
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var linearGradient = svg.append("linearGradient")
+    .attr("id","linear-gradient");
+    linearGradient
+        .attr("x1", "0%")
+        .attr("y1", "0%")
+        .attr("x2", "0%")
+        .attr("y2", "100%");
+    //Set the color for the start (0%)
+    linearGradient.append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "blue");
+
+    //Set the color for the end (100%)
+    linearGradient.append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "red");
+
 
 // Parameter data is the object containing the values for a specific year
 // it has two fields: data.year (a number) and data.ageGroups (an array).
@@ -43,8 +63,6 @@ var svg = d3.select("body").append("svg")
 function updateXScaleDomain(data) {
     var values = data;
     xScale.domain(values.map(function(d) { return d.ageGroup}));
-
-    // for example x.domain is initialized with ["0-4", "5-9", "10-14", ... ] 
 }
 
 function updateYScaleDomain(data){
@@ -54,8 +72,13 @@ function updateYScaleDomain(data){
 
 function updateColorScaleDomain(data){
     var values = data;
-    barColors.domain([0, d3.max(values, function(d) { return d.population; })]);
+    barColors.domain([0, d3.max(values, function(d) { return d.ageGroup; })]);
 }
+
+    function updateYColorScaleDomain(data){
+        var values = data;
+        yColorScale.domain([0, d3.max(values, function(d) { return d.ageGroup; })]);
+    }
 
 function updateAxes(){
     // ".y.axis" selects elements that have both classes "y" and "axis", that is: class="y axis"
@@ -72,11 +95,25 @@ function drawAxes(){
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis);
 
-    // draw the y-axis
+    // draw t-he y-axis
     //
     svg.append("g")
         .attr("class", "y axis")
         .call(yAxis);
+
+}
+
+function drawLegend(){
+    svg.append("rect")
+        .attr("width", 30)
+        .attr("height", 250)
+        .attr("x", 740)
+        .style("fill", "url(#linear-gradient)")
+
+    svg.append("g")
+        .attr("class", "legend axis")
+        .attr("transform", "translate(700)")
+        .call(legendAxis);
 
 }
 
@@ -153,6 +190,8 @@ d3.json("data/1.json")
         updateYScaleDomain(data);
         updateXScaleDomain(data);
         updateColorScaleDomain(data);
+        updateYColorScaleDomain(data)
+        drawLegend();
         drawAxes();
     	updateDrawing(data);
 
