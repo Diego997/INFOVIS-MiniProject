@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b51686b2-ccf7-4e7b-82e2-82fbb978f5bc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/italy_aging_d3_v6/data/1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/italy_aging_d3_v6/js/chart1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/italy_aging_d3_v6/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/italy_aging_d3_v6/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="b51686b2-ccf7-4e7b-82e2-82fbb978f5bc" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,18 +13,22 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/italy_aging_d3_v6/js/chart1.js" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="28KLlqhMQQKYKss5ieYdXPg1MQf" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/italy_aging_d3_v6/data" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Diego/Desktop/INFOVIS-MiniProject"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Diego\Desktop\INFOVIS-MiniProject\italy_aging_d3_v6\data" />
@@ -63,6 +63,7 @@
       <workItem from="1650961046641" duration="48000" />
       <workItem from="1650961124347" duration="44000" />
       <workItem from="1650961288148" duration="7943000" />
+      <workItem from="1651049094528" duration="6322000" />
     </task>
     <servers />
   </component>
@@ -79,6 +80,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

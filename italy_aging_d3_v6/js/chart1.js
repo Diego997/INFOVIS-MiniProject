@@ -1,5 +1,5 @@
 
-    updateTime = 500; // time for transitions
+    updateTime = 800; // time for transitions
 
 var margin = {top: 20, right: 20, bottom: 30, left: 40}; // to memorize the margins
 
@@ -104,28 +104,37 @@ function updateDrawing(data){
         .attr("width", xScale.bandwidth())
         .attr("height", function(d) { return height - yScale(d.population); })
         .attr("fill", function(d) { return barColors(d.ageGroup);})
-        .on("mouseover", function(d) {
-                d3.select(d)
-                .attr("fill", "green");
-                })
+        .on("click", function(d) {
+            if(mario) {
+                mario=0;
+                d3.select(this).transition().duration(updateTime)
+                    .attr("fill", function (d) {
+                        return barColors(d.population);
+                    })
+                    .attr("height", function (d) {
+                        return height - yScale(d.ageGroup);
+                    })
+                    .attr("y", function (d) {
+                        return yScale(d.ageGroup);
+                    });
+            }
+            else{
+                mario=1;
+                d3.select(this).transition().duration(updateTime)
+                    .attr("fill", function (d) {
+                        return barColors(d.ageGroup);
+                    })
+                    .attr("height", function (d) {
+                        return height - yScale(d.population);
+                    })
+                    .attr("y", function (d) {
+                        return yScale(d.population);
+                    });
+            }
+        });
 
+    var mario = 1;
 
-    // Enter + Update clause: update y and height
-    //
-    //Da modificare serve per la transizione una volta premuta la barra
-    bars.transition().duration(updateTime)
-        .attr("x", function(d) { return xScale(d.ageGroup); })
-        .attr("y", function(d) { return yScale(d.population); })
-        .attr("width", xScale.bandwidth())
-        .attr("height", function(d) { return height - yScale(d.population); });
-
-
-}
-
-function click (d){
-    var bar = d3.select(this)
-    bar.transition()
-        .style('transform', )
 }
 
 function redraw(data) {
