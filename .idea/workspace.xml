@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b51686b2-ccf7-4e7b-82e2-82fbb978f5bc" name="Default Changelist" comment="" />
+    <list default="true" id="b51686b2-ccf7-4e7b-82e2-82fbb978f5bc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/italy_aging_d3_v6/js/chart3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/italy_aging_d3_v6/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/italy_aging_d3_v6/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/italy_aging_d3_v6/js/chart2.js" beforeDir="false" afterPath="$PROJECT_DIR$/italy_aging_d3_v6/js/chart2.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,14 +26,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Download/Progetto_InfoVis"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/italy_aging_d3_v6/js" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Diego\Desktop\INFOVIS-MiniProject\italy_aging_d3_v6\js" />
@@ -70,6 +72,8 @@
       <workItem from="1651584378455" duration="7536000" />
       <workItem from="1651652466499" duration="6665000" />
       <workItem from="1651666951014" duration="8174000" />
+      <workItem from="1651738634813" duration="318000" />
+      <workItem from="1651739026238" duration="15881000" />
     </task>
     <servers />
   </component>
@@ -86,5 +90,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

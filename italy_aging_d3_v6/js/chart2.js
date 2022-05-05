@@ -11,7 +11,7 @@ var yScale = d3.scaleLinear().range([height, 0]);
 
 var yColorScale = d3.scaleLinear().range([height, 0]);
 
-var barColors = d3.scaleLinear().range(["yellow ","black"]);
+var barColors = d3.scaleLinear().range(["blue","red"]);
 
 var xAxis = d3.axisBottom(xScale).tickValues([]);  		// Bottom = ticks below
 var yAxis = d3.axisLeft(yScale).ticks(10);
@@ -41,13 +41,8 @@ var linearGradient = svg.append("linearGradient")
         .attr("stop-color", "blue");
 
 
-// Parameter data is the object containing the values for a specific year
-// it has two fields: data.year (a number) and data.ageGroups (an array).
-// Each element d of data.ageGroups[] has d.ageGroup (for example "0-4") and  
-// d.population (a number)
-//
 function updateXScaleDomain() {
-    xScale.domain(dataSet.map(function(d) { return d[0]}));
+    xScale.domain(dataSet.map(function(d) { return dataSet.indexOf(d)}));
 }
 
 function updateYScaleDomain(){
@@ -98,13 +93,13 @@ function updateLegend(){
 }
 
 function updateDrawing(){
-    var bars = svg.selectAll(".bar").data(dataSet, function(d){return d[0]});
+    var bars = svg.selectAll(".bar").data(dataSet, function(d){return d});
 
     bars.exit().remove();
 
     bars.enter().append("rect")
         .attr("class", "bar")
-        .attr("x", function(d) { return xScale(d[0]); })
+        .attr("x", function(d) { return xScale(dataSet.indexOf(d)); })
         .attr("y", function(d) { return yScale(d[1]); })
         .attr("width", xScale.bandwidth())
         .attr("height", function(d) { return height - yScale(d[1]); })
@@ -113,7 +108,7 @@ function updateDrawing(){
 
     bars.transition().duration(updateTime)
         .attr("class", "bar")
-        .attr("x", function(d) { return xScale(d[0]); })
+        .attr("x", function(d) { return xScale(dataSet.indexOf(d)); })
         .attr("y", function(d) { return yScale(d[1]); })
         .attr("width", xScale.bandwidth())
         .attr("height", function(d) { return height - yScale(d[1]); })
