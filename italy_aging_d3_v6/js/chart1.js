@@ -1,26 +1,13 @@
+const updateTime = 800; // time for transitions
+const margin = {top: 20, right: 20, bottom: 30, left: 40};
+const width = 800 - margin.left - margin.right;
+const height = 300 - margin.top - margin.bottom;
+var dataSet = [];
 
-    updateTime = 800; // time for transitions
+var xScale = d3.scaleBand()
+        .rangeRound([2, width-60])
+	.padding(.1);
 
-var margin = {top: 20, right: 20, bottom: 30, left: 40}; // to memorize the margins
-
-// screen is 800 x 300
-// actual drawing leaves a margin around
-// width and height are the size of the actual drawing
-//
-var width = 800 - margin.left - margin.right;
-var height = 300 - margin.top - margin.bottom;
-
-// x is the scale for x-axis
-// domain is not given here but it is updated by updateXScaleDomain()
-// 
-var xScale = d3.scaleBand()         // ordinal scale
-        .rangeRound([2, width])    // leaves 10 pixels for the y-axis
-	.padding(.1);              // between the bands
-                               // x.bandwidth() will give the width of each band
-
-// y is the scale for y-axis
-// domain is not given here but it is updated by updateYScaleDomain()
-//
 var yScale = d3.scaleLinear().range([height, 0]);
 
 var yColorScale = d3.scaleLinear().range([height, 0]);
@@ -75,10 +62,10 @@ function updateColorScaleDomain(data){
     barColors.domain([0, d3.max(values, function(d) { return d.ageGroup; })]);
 }
 
-    function updateYColorScaleDomain(data){
-        var values = data;
-        yColorScale.domain([0, d3.max(values, function(d) { return d.ageGroup; })]);
-    }
+function updateYColorScaleDomain(data){
+    var values = data;
+    yColorScale.domain([0, d3.max(values, function(d) { return d.ageGroup; })]);
+}
 
 function updateAxes(){
     // ".y.axis" selects elements that have both classes "y" and "axis", that is: class="y axis"
@@ -88,15 +75,11 @@ function updateAxes(){
 
 function drawAxes(){
 
-    // draw the x-axis
-    //
     svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis);
 
-    // draw t-he y-axis
-    //
     svg.append("g")
         .attr("class", "y axis")
         .call(yAxis);
@@ -105,9 +88,9 @@ function drawAxes(){
 
 function drawLegend(){
     svg.append("rect")
-        .attr("width", 30)
+        .attr("width", 15)
         .attr("height", 250)
-        .attr("x", 740)
+        .attr("x", 685)
         .style("fill", "url(#linear-gradient)")
 
     svg.append("g")
@@ -182,11 +165,17 @@ function redraw(data) {
     updateDrawing(data);
 }
 
+//function creaLista(data) {
+  //  var list = new List();
+    //list.ap
+//}
+
 d3.json("data/1.json")
 	.then(function(data) {
-
-    	// Drawing axes and initial drawing
-    	//
+        data.forEach(row => {
+            arr = Object.getOwnPropertyNames(row).map(function(e) {return row[e];});
+            dataSet.push(arr);
+        });
         updateYScaleDomain(data);
         updateXScaleDomain(data);
         updateColorScaleDomain(data);

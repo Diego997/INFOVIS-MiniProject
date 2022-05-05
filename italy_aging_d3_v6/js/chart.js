@@ -133,7 +133,7 @@ function redraw(data) {
     updateDrawing(data);
 }
 
-d3.json("data/dataset.json")
+d3.json("data/1.json")
 	.then(function(data) {
 
     	// Drawing axes and initial drawing
