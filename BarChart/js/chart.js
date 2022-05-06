@@ -1,155 +1,156 @@
+const updateTime = 800; // time for transitions
+const margin = {top: 20, right: 20, bottom: 30, left: 40};
+const width = 1200 - margin.left - margin.right;
+const height = 600 - margin.top - margin.bottom;
+const ldmargin = 100;
+const nBars=10;
+const posFirstBar=(width/nBars/10)+2;
+const posOtherBars=(width-2)/nBars;
+const posLegend = {from: Math.trunc((posOtherBars*2)+(posFirstBar)+(posOtherBars/2))-5, to: Math.trunc((posOtherBars*7)+(posFirstBar)+(posOtherBars/2))-9};
 
-
-var delayTime = 1000, // time between the picture of one year and the next
-    updateTime = 500; // time for transitions
-
-var margin = {top: 20, right: 20, bottom: 30, left: 40}; // to memorize the margins
-
-// screen is 800 x 300
-// actual drawing leaves a margin around
-// width and height are the size of the actual drawing
-//
-var width = 800 - margin.left - margin.right;
-var height = 300 - margin.top - margin.bottom;
-
-// x is the scale for x-axis
-// domain is not given here but it is updated by updateXScaleDomain()
-// 
-var xScale = d3.scaleBand()         // ordinal scale
-        .rangeRound([2, width])    // leaves 10 pixels for the y-axis
-	.padding(.1);              // between the bands
-                               // x.bandwidth() will give the width of each band
-
-// y is the scale for y-axis
-// domain is not given here but it is updated by updateYScaleDomain()
-//
-var yScale = d3.scaleLinear().range([height, 0]);
-
-var xAxis = d3.axisBottom(xScale);  		// Bottom = ticks below
-var yAxis = d3.axisLeft(yScale).ticks(10);   // Left = ticks on the left 
+var dataSet = [];
+var xScale = d3.scaleBand().rangeRound([2, width]).padding(.1);
+var yScale = d3.scaleLinear().range([height-ldmargin, 0]);
+var legendScale = d3.scaleLinear().range([posLegend.from, posLegend.to]);
+var barColors = d3.scaleLinear().range(["#2c7bb6", "#00a6ca","#00ccbc","#90eb9d","#ffff8c",
+    "#f9d057","#f29e2e","#e76818","#d7191c"]);
+var yAxis = d3.axisLeft(yScale).ticks(10);
+var legendAxis = d3.axisBottom(legendScale).ticks(10);// Left = ticks on the left
 
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)     // i.e., 800 again 
     .attr("height", height + margin.top + margin.bottom)   // i.e., 300 again
     .append("g")                                           // g is a group
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");                                                    
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-// Parameter data is the object containing the values for a specific year
-// it has two fields: data.year (a number) and data.ageGroups (an array).
-// Each element d of data.ageGroups[] has d.ageGroup (for example "0-4") and  
-// d.population (a number)
-//
-function updateXScaleDomain(data) {
-    var values = data["ageGroups"];
-    xScale.domain(values.map(function(d) { return d.ageGroup}));
-    // for example x.domain is initialized with ["0-4", "5-9", "10-14", ... ] 
+function updateXScaleDomain() {
+    xScale.domain(dataSet.map(function(d) { return dataSet.indexOf(d)}));
 }
 
-function updateYScaleDomain(data){
-    var values = data["ageGroups"];
-    yScale.domain([0, d3.max(values, function(d) { return d.population; })]);
+function updateYScaleDomain(){
+    yScale.domain([0, d3.max(dataSet, function(d) { return d[1]; })]);
+}
+
+function updateColorScaleDomain(){
+    var max=d3.max(dataSet, function(d){ return d[0];})
+    barColors.domain([0,max*1/8,max*2/8,max*3/8,max*4/8,max*5/8,max*6/8,max*7/8,max]);
+}
+
+function updateLegendScaleDomain(){
+    legendScale.domain([0, d3.max(dataSet, function(d) { return d[0]; })]);
 }
 
 function updateAxes(){
-    // ".y.axis" selects elements that have both classes "y" and "axis", that is: class="y axis"
-    svg.select(".y.axis").transition().duration(updateTime).call(yAxis);
-    svg.select(".x.axis").transition().duration(updateTime).call(xAxis);
+    svg.select("g.y.axis").transition().duration(updateTime).call(yAxis);
+    svg.select("g.legend").transition().duration(updateTime).call(legendAxis);
 }
 
 function drawAxes(){
 
-    // draw the x-axis
-    //
-    svg.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
-
-    // draw the y-axis
-    //
     svg.append("g")
         .attr("class", "y axis")
         .call(yAxis);
 
+    svg.append("g")
+        .attr("class", "legend")
+        .attr("transform", "translate(0," + (height-(width*25/height)+30)+")")
+        .call(legendAxis);
 }
 
-// Parameter data is the object containing the values for a specific year
-// it has two fields: data.year (a number) and data.ageGroups (an array).
-// Each element d of data.ageGroups[] has d.ageGroup (for example "0-4") and  
-// d.population (a number)
-//
-function updateDrawing(data){
+function drawLegend(){
+    var linearGradient = svg.append("linearGradient")
+        .attr("id","linear-gradient");
+    linearGradient
+        .attr("x1", "0%")
+        .attr("y1", "0%")
+        .attr("x2", "100%")
+        .attr("y2", "0%");
 
-    var year = data["year"];
-    var values = data["ageGroups"];
+    linearGradient.selectAll("stop")
+        .data([
+            {offset: "0%", color: "#2c7bb6"},
+            {offset: "12.5%", color: "#00a6ca"},
+            {offset: "25%", color: "#00ccbc"},
+            {offset: "37.5%", color: "#90eb9d"},
+            {offset: "50%", color: "#ffff8c"},
+            {offset: "62.5%", color: "#f9d057"},
+            {offset: "75%", color: "#f29e2e"},
+            {offset: "87.5%", color: "#e76818"},
+            {offset: "100%", color: "#d7191c"}
+        ])
+        .enter().append("stop")
+        .attr("offset", function(d) { return d.offset; })
+        .attr("stop-color", function(d) { return d.color; });
 
-    // Data join: function(d) is the key to recognize the right bar
-    var bars = svg.selectAll(".bar").data(values, function(d){return d.ageGroup});
+    svg.append("rect")
+        .attr("width", posLegend.to-posLegend.from)
+        .attr("height", 30)
+        .attr("x", posLegend.from)
+        .attr("y", height-(width*25/height))
+        .style("fill", "url(#linear-gradient)")
+}
 
-    // Exit clause: Remove elements
+function updateDrawing(){
+    var bars = svg.selectAll(".bar").data(dataSet, function(d){return d});
+
     bars.exit().remove();
 
-    // Enter clause: add new elements
-    //
     bars.enter().append("rect")
         .attr("class", "bar")
-        .attr("x", function(d) { return xScale(d.ageGroup); })
-        .attr("y", function(d) { return yScale(d.population); })
+        .attr("x", function(d) { return xScale(dataSet.indexOf(d)); })
+        .attr("y", function(d) { return yScale(d[1]); })
         .attr("width", xScale.bandwidth())
-        .attr("height", function(d) { return height - yScale(d.population); });
+        .attr("height", function(d) { return height-ldmargin - yScale(d[1]); })
+        .attr("fill", function(d) { return barColors(d[0]);})
+        .on("click", handleClick)
 
-    // Enter + Update clause: update y and height
-    //
     bars.transition().duration(updateTime)
-        .attr("x", function(d) { return xScale(d.ageGroup); })
-        .attr("y", function(d) { return yScale(d.population); })
+        .attr("class", "bar")
+        .attr("x", function(d) { return xScale(dataSet.indexOf(d)); })
+        .attr("y", function(d) { return yScale(d[1]); })
         .attr("width", xScale.bandwidth())
-        .attr("height", function(d) { return height - yScale(d.population); });
-
-    // Data join for year
-    // ".year" selects all elements with class="year"
-    //
-    var yearNode = svg.selectAll(".year").data([year]);
-
-    // Omitting the exit clause
-
-    // Enter year
-    //
-    yearNode.enter().append("text")
-        .attr("class","year")
-        .attr("x", width - margin.right)
-        .attr("y", margin.top);
-
-    // Enter + Update year
-    //
-    yearNode.text(function(d){ return d });
+        .attr("height", function(d) { return height-ldmargin - yScale(d[1]); })
+        .attr("fill", function(d) { return barColors(d[0]);})
 
 }
 
-function redraw(data) {
-    updateXScaleDomain(data);
-    updateYScaleDomain(data);
+function formSVGtoIndex(rect){
+    var x = rect.getAttribute("x")
+    x=Math.round((x-Math.trunc(posFirstBar))/posOtherBars)
+    return x
+}
+
+function handleClick() {
+    var elem=dataSet[formSVGtoIndex(this)]
+    var swap1=elem[0]
+    var swap0=elem[1]
+    elem[1]=swap1
+    elem[0]=swap0
+    redraw();
+}
+
+function redraw() {
+    updateYScaleDomain();
+    updateColorScaleDomain();
+    updateLegendScaleDomain();
     updateAxes();
-    updateDrawing(data);
+    updateDrawing();
 }
 
-d3.json("data/1.json")
+
+d3.json("data/dataset.json")
 	.then(function(data) {
-
-    	// Drawing axes and initial drawing
-    	//
-        updateYScaleDomain(data[0]);
-        updateXScaleDomain(data[0]);
+        data.forEach(row => {
+            arr = Object.getOwnPropertyNames(row).map(function(e) {return row[e];});
+            dataSet.push(arr);
+        });
+        updateYScaleDomain();
+        updateXScaleDomain();
+        updateColorScaleDomain();
+        updateLegendScaleDomain()
+        drawLegend();
         drawAxes();
-    	updateDrawing(data[0]);
-
-    	var counter = 0;
-    	setInterval(function(){
-       		if (data[counter+1]){
-           		counter++;
-           		redraw(data[counter]);
-       		}
-    	}, delayTime)
+    	updateDrawing();
    	})
 	.catch(function(error) {
 		console.log(error); // Some error handling here

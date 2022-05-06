@@ -1,15 +1,13 @@
 
-.axis, .values {
-    font: 11px sans-serif;
+.y.axis {
+    font: 20px sans-serif;
 }
 
-.axis path,
-.axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
+.legend {
+    font: 16px sans-serif;
+}
+body {
+    background-color: ghostwhite;
+        color:black;
 }
 
-.x.axis path {
-    display: none;
-}
