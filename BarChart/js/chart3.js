@@ -129,7 +129,7 @@ function redraw() {
 }
 
 
-d3.json("data/1.json")
+d3.json("data/dataset.json")
 	.then(function(data) {
         data.forEach(row => {
             arr = Object.getOwnPropertyNames(row).map(function(e) {return row[e];});

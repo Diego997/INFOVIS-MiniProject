@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b51686b2-ccf7-4e7b-82e2-82fbb978f5bc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/italy_aging_d3_v6/js/chart3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/italy_aging_d3_v6/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/italy_aging_d3_v6/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/italy_aging_d3_v6/js/chart2.js" beforeDir="false" afterPath="$PROJECT_DIR$/italy_aging_d3_v6/js/chart2.js" afterDir="false" />
-    </list>
+    <list default="true" id="b51686b2-ccf7-4e7b-82e2-82fbb978f5bc" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -90,6 +85,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
