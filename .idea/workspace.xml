@@ -18,13 +18,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/italy_aging_d3_v6/js" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Diego/Desktop/INFOVIS-MiniProject/BarChart/data"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Diego\Desktop\INFOVIS-MiniProject\BarChart\data" />
       <recent name="C:\Users\Diego\Desktop\INFOVIS-MiniProject\italy_aging_d3_v6\js" />
       <recent name="C:\Users\Diego\Desktop\INFOVIS-MiniProject\italy_aging_d3_v6\data" />
     </key>
@@ -66,6 +68,10 @@
       <workItem from="1651666951014" duration="8174000" />
       <workItem from="1651738634813" duration="318000" />
       <workItem from="1651739026238" duration="15881000" />
+      <workItem from="1651828499450" duration="1119000" />
+      <workItem from="1651830431074" duration="1034000" />
+      <workItem from="1651859329757" duration="177000" />
+      <workItem from="1652258087400" duration="1621000" />
     </task>
     <servers />
   </component>

@@ -1,5 +1,5 @@
 const updateTime = 800; // time for transitions
-const margin = {top: 20, right: 20, bottom: 30, left: 40};
+const margin = {top: 20, right: 20, bottom: 30, left: 60};
 const width = 1200 - margin.left - margin.right;
 const height = 600 - margin.top - margin.bottom;
 const ldmargin = 100;
@@ -14,8 +14,8 @@ var yScale = d3.scaleLinear().range([height-ldmargin, 0]);
 var legendScale = d3.scaleLinear().range([posLegend.from, posLegend.to]);
 var barColors = d3.scaleLinear().range(["#2c7bb6", "#00a6ca","#00ccbc","#90eb9d","#ffff8c",
     "#f9d057","#f29e2e","#e76818","#d7191c"]);
-var yAxis = d3.axisLeft(yScale).ticks(10);
-var legendAxis = d3.axisBottom(legendScale).ticks(10);// Left = ticks on the left
+var yAxis = d3.axisLeft(yScale).ticks(10,"s");
+var legendAxis = d3.axisBottom(legendScale).ticks(10,"s");// Left = ticks on the left
 
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)     // i.e., 800 again 
